@@ -1,4 +1,5 @@
-from sqlalchemy import Column, String, Boolean
+from sqlalchemy import Column, String, DateTime, Boolean
+from datetime import datetime, timezone
 from src.domain.entities.base_entity import BaseEntity
 
 
@@ -12,7 +13,7 @@ class User(BaseEntity):
     last_name = Column(String, nullable=True)
     profile_picture_url = Column(String, nullable=True)
     bio = Column(String, nullable=True)
-    join_date = Column(String, nullable=True)
-    last_login = Column(String, nullable=True)
+    join_date = Column(DateTime, default=datetime.now(timezone.utc))
+    last_login = Column(DateTime, default=datetime.now(timezone.utc))
     is_active = Column(Boolean, nullable=True)
     role = Column(String, nullable=True)
