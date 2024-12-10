@@ -1,7 +1,5 @@
-from sqlalchemy.ext.declarative import declarative_base
+from src.infrastructure.database import Base
 from sqlalchemy import Column, Integer
-
-Base = declarative_base()
 
 
 class BaseEntity(Base):
