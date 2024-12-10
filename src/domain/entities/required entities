@@ -1,0 +1,105 @@
+2. Posts Table
+To store user-generated posts.
+
+PostID (Primary Key)
+UserID (Foreign Key from Users table)
+Content (text, possibly markdown or plain text)
+ImageUrl (optional)
+VideoUrl (optional)
+PostDate
+LikesCount
+SharesCount
+CommentsCount
+IsPublished (indicates if post is visible to others)
+3. Comments Table
+For comments on posts.
+
+CommentID (Primary Key)
+PostID (Foreign Key from Posts table)
+UserID (Foreign Key from Users table)
+Content
+CommentDate
+LikesCount
+4. Likes Table
+To track which users have liked which posts or comments.
+
+LikeID (Primary Key)
+UserID (Foreign Key from Users table)
+PostID (Foreign Key from Posts table, nullable if the like is for a comment)
+CommentID (Foreign Key from Comments table, nullable if the like is for a post)
+LikeDate
+5. Followers Table
+To implement the follower-following functionality.
+
+FollowerID (Foreign Key from Users table)
+FollowingID (Foreign Key from Users table)
+FollowDate
+6. Notifications Table
+To manage notifications sent to users.
+
+NotificationID (Primary Key)
+UserID (Foreign Key from Users table)
+Message
+Link (URL to the content being referenced, e.g., a new post or comment)
+ReadStatus (True/False)
+CreatedAt
+7. Media Table
+To store details about media uploaded by users (images, videos, etc.).
+
+MediaID (Primary Key)
+UserID (Foreign Key from Users table)
+Type (Image, Video, etc.)
+MediaUrl
+UploadDate
+8. Tags Table
+For categorizing posts using tags or hashtags.
+
+TagID (Primary Key)
+TagName
+CreatedAt
+9. PostTags Table
+To implement the many-to-many relationship between posts and tags.
+
+PostID (Foreign Key from Posts table)
+TagID (Foreign Key from Tags table)
+10. Messages Table
+For private messaging between users.
+
+MessageID (Primary Key)
+SenderUserID (Foreign Key from Users table)
+ReceiverUserID (Foreign Key from Users table)
+Content
+SendDate
+ReadStatus
+11. Reports Table
+To manage reports by users on posts, comments, or other content.
+
+ReportID (Primary Key)
+UserID (Foreign Key from Users table)
+ReportedItemID (ID of post or comment, polymorphic field)
+Reason
+ReportDate
+Status (Pending, Investigating, Resolved)
+12. AI_Interactions Table
+For tracking interactions with the AI, such as content recommendations, feedback, or content generation.
+
+AIInteractionID (Primary Key)
+UserID (Foreign Key from Users table)
+InteractionType (Content suggestion, Feedback, etc.)
+Details (JSON or text with interaction details)
+InteractionDate
+13. ActivityLogs Table
+For tracking user activity, useful for analytics and security.
+
+LogID (Primary Key)
+UserID (Foreign Key from Users table)
+ActionType (Login, Post Created, Commented, etc.)
+Details
+ActionDate
+14. Settings Table
+For user-specific or platform-wide settings.
+
+SettingID (Primary Key)
+UserID (Foreign Key from Users table, nullable for global settings)
+SettingName (e.g., Privacy, Theme, Language)
+SettingValue (JSON or String)

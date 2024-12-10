@@ -1,29 +1,37 @@
 from sqlalchemy.orm import Session
-from sqlalchemy.ext.declarative import as_declarative
-from sqlalchemy.orm.session import Session
-from typing import Generic, Self, TypeVar, List, Optional
+from sqlalchemy.exc import NoResultFound
+from typing import Optional, List
+from src.domain.entities.base_repository import IBaseRepository
 
-T = TypeVar('T')
 
-class BaseRepository(Generic[T]):
-    def __init__(self, db: Session):
-        self.db = db
+class BaseRepository(IBaseRepository):
+    def __init__(self, session: Session, model: type):
+        super().__init__(session, model)
 
-    def get(self, id: int) -> Optional[T]:
-        return self.db.query(T).filter(T.id == id).first()
+    def add(self, entity) -> object:
+        self.session.add(entity)
+        self.session.commit()
+        self.session.refresh(entity)
 
-    def get_all(self) -> List[T]:
-        return self.db.query(T).all()
+        return entity
 
-    def add(self, entity: T) -> None:
-        self.db.add(entity)
-        self.db.commit()
-        self.db.refresh(entity)
-        
-    def update(self, entity: T) -> None:
-        self.db.commit()
-        self.db.refresh(entity)
+    def get_by_id(self, entity_id: int) -> Optional[object]:
+        try:
+            return self.session.query(self.model).filter_by(id=entity_id).one()
+        except NoResultFound:
+            return None
 
-    def delete(self, entity: T) -> None:
-        self.db.delete(entity)
-        self.db.commit()
+    def get_all(self) -> List[object]:
+        return self.session.query(self.model).all()
+
+    def update(self, entity) -> object:
+        self.session.commit()
+        self.session.refresh(entity)
+
+        return entity
+
+    def delete(self, entity_id) -> None:
+        entity = self.get_by_id(entity_id)
+        if entity:
+            self.session.delete(entity)
+            self.session.commit()

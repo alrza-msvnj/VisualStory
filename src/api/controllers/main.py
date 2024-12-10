@@ -1,3 +1,3 @@
-from src.infrastructure.configurations.database import Base, engine
+from src.infrastructure.configurations.config import Base, engine
 
 Base.metadata.create_all(bind=engine)

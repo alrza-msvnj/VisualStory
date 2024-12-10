@@ -3,7 +3,8 @@ from sqlalchemy import Column, Integer
 
 Base = declarative_base()
 
-class BaseEntity(Base):
-    __bastract__ = True # Prevents creating a table for this class
 
-    id: int = Column(Integer, primary_key=True, autoincrement=True)
+class BaseEntity(Base):
+    __abstract__ = True  # prevents creating a table or instantiating an object for this class
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
