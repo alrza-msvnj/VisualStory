@@ -4,11 +4,7 @@ from src.infrastructure.config import Config
 
 DATABASE_URL = Config.SQLALCHEMY_DATABASE_URI
 
-engine = create_engine(DATABASE_URL, echo=True) # echo=True: Enables SQL query logging
+engine = create_engine(DATABASE_URL, echo=True)  # echo=True: Enables SQL query logging
 session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
-
-def init_db():
-    Base.metadata.create_all(bind=engine)
-    print('Database initialized successfully!')

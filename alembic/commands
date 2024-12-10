@@ -1,0 +1,8 @@
+1. Create a Migration Script:
+alembic revision --autogenerate -m "your migration message"
+
+2. Apply Migrations:
+alembic upgrade head
+
+3. Rollback Migrations:
+alembic downgrade -1

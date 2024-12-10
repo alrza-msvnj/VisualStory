@@ -6,4 +6,3 @@ venv/
 .venv/
 .pytest_cache/
 *.log
-migrations/
