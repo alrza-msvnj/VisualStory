@@ -11,7 +11,7 @@ class IBaseRepository(Generic[T], ABC):
         pass
 
     @abstractmethod
-    def get_by_id(self, entity_id: int) -> Optional[T]:
+    def get(self, entity_id: int) -> Optional[T]:
         pass
 
     @abstractmethod

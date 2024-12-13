@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import datetime
 
 
-class AddUserRequest(BaseModel):
+class UserRequest(BaseModel):
     username: constr(min_length=3, max_length=50)
     email: EmailStr
     password: constr(min_length=8, max_length=128)
@@ -14,7 +14,7 @@ class AddUserRequest(BaseModel):
     role: Optional[str] = "user"
 
 
-class AddUserResponse(BaseModel):
+class UserResponse(BaseModel):
     id: int
     username: str
     email: str

@@ -1,19 +1,34 @@
 from fastapi import APIRouter
-from src.application.dtos.user.add_user import AddUserResponse, AddUserRequest
+from typing import List
+from src.application.dtos.user.user import UserResponse, UserRequest
 from src.application.services.user_service import UserService
 
 router = APIRouter()
 
 
-@router.post('/user', response_model=AddUserResponse)
-def add(request: AddUserRequest):
-    user = UserService.add(request)
+@router.post('/user/add', response_model=UserResponse)
+async def add(request: UserRequest):
+    user = await UserService.add(request)
 
     return user
 
 
-@router.get('/user', response_model=AddUserRequest)
-def get(request: int):
-    user = UserService.get(request)
+@router.get('/user/get', response_model=UserResponse)
+async def get(request: int):
+    user = await UserService.get(request)
+
+    return user
+
+
+@router.get('/user/get_all', response_model=List[UserResponse])
+async def get_all():
+    user = await UserService.get_all()
+
+    return user
+
+
+@router.get('/user/get_by_username', response_model=UserResponse)
+async def get_by_username(username: str):
+    user = await UserService.get_by_username(username)
 
     return user
