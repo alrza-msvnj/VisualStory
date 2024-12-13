@@ -18,7 +18,6 @@ class UserResponse(BaseModel):
     id: int
     username: str
     email: str
-    password_hash: str
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     profile_picture_url: Optional[str] = None
