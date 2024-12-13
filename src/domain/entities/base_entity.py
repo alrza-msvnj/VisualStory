@@ -1,5 +1,5 @@
-from src.infrastructure.database import Base
 from sqlalchemy import Column, Integer
+from src.infrastructure.database import Base
 
 
 class BaseEntity(Base):

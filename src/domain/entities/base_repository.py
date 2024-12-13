@@ -1,14 +1,10 @@
-from sqlalchemy.orm import Session
-from abc import ABC, abstractmethod
 from typing import TypeVar, Generic, Optional, List
+from abc import ABC, abstractmethod
 
 T = TypeVar('T')
 
 
-class IBaseRepository(ABC, Generic[T]):
-    def __init__(self, session: Session, model: T):
-        self.session = session
-        self.model = model
+class IBaseRepository(Generic[T], ABC):
 
     @abstractmethod
     def add(self, entity: T) -> T:
