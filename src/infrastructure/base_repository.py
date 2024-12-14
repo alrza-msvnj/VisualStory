@@ -21,7 +21,7 @@ class BaseRepository(Generic[T], IBaseRepository[T]):
 
     async def get(self, entity_id: int) -> Optional[T]:
         async with self.session_factory() as db:
-            entity = await db.get(T, entity_id)
+            entity = await db.get(self.model, entity_id)
 
             return entity
 
