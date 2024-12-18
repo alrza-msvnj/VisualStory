@@ -6,3 +6,10 @@ from src.application.dtos.user.user import UserResponse
 class UserController(BaseController[UserResponse, UserService]):
     def __init__(self):
         super().__init__(UserService())
+
+        self.router.get("/get_by_username/{id}", response_model=UserResponse)(self.get)
+
+    async def get_by_username(self, username: str) -> UserResponse:
+        user = await self.service.get_by_username(username)
+
+        return user

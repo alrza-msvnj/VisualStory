@@ -10,26 +10,26 @@ class BaseController(Generic[TEntity, TService]):
         self.service = service
         self.router = APIRouter()
 
-        self.router.get("/", response_model=List[TEntity])(self.get_all)
-        self.router.get("/{id}", response_model=TEntity)(self.get)
         self.router.post("/", response_model=TEntity)(self.add)
+        self.router.get("/{id}", response_model=TEntity)(self.get)
+        self.router.get("/", response_model=List[TEntity])(self.get_all)
         self.router.put("/{id}", response_model=TEntity)(self.update)
         self.router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)(self.delete)
 
-    async def get_all(self) -> List[TEntity]:
-        entities = await self.service.get_all()
+    async def add(self, entity: TEntity) -> TEntity:
+        entity = await self.service.create(entity)
 
-        return entities
+        return entity
 
     async def get(self, entity_id: int) -> TEntity:
         entity = await self.service.get(entity_id)
 
         return entity
 
-    async def add(self, entity: TEntity) -> TEntity:
-        entity = await self.service.create(entity)
+    async def get_all(self) -> List[TEntity]:
+        entities = await self.service.get_all()
 
-        return entity
+        return entities
 
     async def update(self, entity: TEntity) -> TEntity:
         entity = await self.service.update(entity)
