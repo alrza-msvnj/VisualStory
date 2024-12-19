@@ -17,7 +17,7 @@ class BaseController(Generic[TEntity, TService]):
         self.router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)(self.delete)
 
     async def add(self, entity: TEntity) -> TEntity:
-        entity = await self.service.create(entity)
+        entity = await self.service.add(entity)
 
         return entity
 

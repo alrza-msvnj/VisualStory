@@ -6,7 +6,7 @@ from src.infrastructure.database import session_factory
 from src.infrastructure.repositories.user_repository import UserRepository
 
 
-class UserService(BaseService[UserResponse], IUserService):
+class UserService(BaseService[UserResponse, User, UserRepository], IUserService):
     def __init__(self):
         super().__init__(UserResponse, User, UserRepository(session_factory))
 

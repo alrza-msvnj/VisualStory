@@ -7,7 +7,7 @@ class UserController(BaseController[UserResponse, UserService]):
     def __init__(self):
         super().__init__(UserService())
 
-        self.router.get("/get_by_username/{id}", response_model=UserResponse)(self.get)
+        self.router.get("/get_by_username/{username}", response_model=UserResponse)(self.get_by_username)
 
     async def get_by_username(self, username: str) -> UserResponse:
         user = await self.service.get_by_username(username)
