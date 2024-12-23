@@ -1,6 +1,6 @@
 from abc import ABC
-from src.application.contracts.base_service import IBaseService
 from src.application.dtos.user.user import UserResponse
+from src.application.contracts.base_service import IBaseService
 
 
 class IUserService(IBaseService[UserResponse], ABC):

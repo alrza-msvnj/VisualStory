@@ -1,19 +1,19 @@
-from sqlalchemy import Column, String, DateTime, Boolean
-from datetime import datetime, timezone
+from datetime import datetime
+from sqlalchemy.orm import Mapped, mapped_column
 from src.domain.entities.base_entity import BaseEntity
 
 
 class User(BaseEntity):
     __tablename__ = 'users'  # user conflicts with reserved keywords
 
-    username = Column(String, unique=True, nullable=False)
-    email = Column(String, unique=True, nullable=False)
-    password_hash = Column(String, nullable=False)
-    first_name = Column(String, nullable=True)
-    last_name = Column(String, nullable=True)
-    profile_picture_url = Column(String, nullable=True)
-    bio = Column(String, nullable=True)
-    join_date = Column(DateTime, default=datetime.now(timezone.utc))
-    last_login = Column(DateTime, default=datetime.now(timezone.utc))
-    is_active = Column(Boolean, nullable=True)
-    role = Column(String, nullable=True)
+    username: Mapped[str] = mapped_column(unique=True, nullable=False, index=True)
+    email: Mapped[str] = mapped_column(unique=True, nullable=False, index=True)
+    password_hash: Mapped[str] = mapped_column(nullable=False)
+    first_name: Mapped[str] = mapped_column(nullable=True)
+    last_name: Mapped[str] = mapped_column(nullable=True)
+    profile_picture_url: Mapped[str] = mapped_column(nullable=True)
+    bio: Mapped[str] = mapped_column(nullable=True)
+    join_date: Mapped[datetime] = mapped_column(default=datetime.now())
+    last_login: Mapped[datetime] = mapped_column(default=datetime.now())
+    is_active: Mapped[bool] = mapped_column(nullable=True, default=True)
+    role: Mapped[str] = mapped_column(nullable=True, default='user')

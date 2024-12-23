@@ -1,10 +1,9 @@
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, Integer
+from sqlalchemy.orm import declarative_base, Mapped, mapped_column
 
 Base = declarative_base()
 
 
 class BaseEntity(Base):
-    __abstract__ = True  # prevents creating a table or instantiating an object for this class
+    __abstract__ = True
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)

@@ -36,5 +36,6 @@ class UserController:
         await service.delete(entity_id)
 
     @staticmethod
-    async def get_by_username(username: str, user_service: Annotated[IUserService, Depends(get_user_service)]) -> UserResponse:
+    async def get_by_username(username: str,
+                              user_service: Annotated[IUserService, Depends(get_user_service)]) -> UserResponse:
         return await user_service.get_by_username(username)

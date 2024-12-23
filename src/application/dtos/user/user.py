@@ -1,6 +1,6 @@
-from pydantic import BaseModel, constr, EmailStr
 from typing import Optional
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, constr, EmailStr
 
 
 class UserRequest(BaseModel):
@@ -15,6 +15,8 @@ class UserRequest(BaseModel):
 
 
 class UserResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     username: str
     email: str
@@ -26,6 +28,3 @@ class UserResponse(BaseModel):
     last_login: Optional[datetime] = None
     is_active: Optional[bool] = True
     role: Optional[str] = None
-
-    class Config:
-        from_attributes = True

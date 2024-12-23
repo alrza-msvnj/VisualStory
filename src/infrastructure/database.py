@@ -1,6 +1,6 @@
 import contextlib
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession, AsyncConnection
 from typing import Any, AsyncIterator
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession, AsyncConnection
 from src.infrastructure.config import Config
 from src.infrastructure.settings import settings
 

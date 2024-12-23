@@ -1,9 +1,9 @@
+from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from typing import Optional
-from src.domain.entities.user.user_repository import IUserRepository
-from src.infrastructure.base_repository import BaseRepository
 from src.domain.entities.user.user import User
+from src.domain.entities.user.user_repository import IUserRepository
+from src.infrastructure.repositories.base_repository import BaseRepository
 
 
 class UserRepository(BaseRepository[User], IUserRepository):
@@ -11,13 +11,7 @@ class UserRepository(BaseRepository[User], IUserRepository):
         super().__init__(db, User)
 
     async def get_by_username(self, username: str) -> Optional[User]:
-        user = await self.db.execute(select(User).filter_by(username=username))
-        user = user.scalars().first()
-
-        return user
+        return (await self.db.scalars(select(User).where(User.username == username))).first()
 
     async def get_by_email(self, email: str) -> Optional[User]:
-        user = await self.db.execute(select(User).filter_by(email=email))
-        user = user.scalars().first()
-
-        return user
+        return (await self.db.scalars(select(User).where(User.email == email))).first()
