@@ -7,21 +7,21 @@ T = TypeVar('T')
 class IBaseRepository(Generic[T], ABC):
 
     @abstractmethod
-    def add(self, entity: T) -> T:
+    async def add(self, entity: T) -> T:
         pass
 
     @abstractmethod
-    def get(self, entity_id: int) -> Optional[T]:
+    async def get(self, entity_id: int) -> Optional[T]:
         pass
 
     @abstractmethod
-    def get_all(self) -> List[T]:
+    async def get_all(self) -> List[T]:
         pass
 
     @abstractmethod
-    def update(self, entity: T) -> T:
+    async def update(self, entity: T) -> T:
         pass
 
     @abstractmethod
-    def delete(self, entity_id: int) -> None:
+    async def delete(self, entity_id: int) -> None:
         pass
