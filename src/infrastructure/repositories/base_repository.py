@@ -12,8 +12,6 @@ class BaseRepository(Generic[T], IBaseRepository[T]):
         self.model = model
 
     async def add(self, entity: T) -> T:
-        if entity.id == 0:
-            entity.id = None
         self.db.add(entity)
         await self.db.commit()
         await self.db.refresh(entity)

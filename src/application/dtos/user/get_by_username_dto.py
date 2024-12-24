@@ -1,21 +1,13 @@
 from typing import Optional
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, constr, EmailStr
+from pydantic import BaseModel, ConfigDict
 
 
-class UserRequest(BaseModel):
-    id: Optional[int] = None
+class GetByUsernameRequest(BaseModel):
     username: str
-    email: EmailStr
-    password_hash: str
-    first_name: Optional[str] = None
-    last_name: Optional[str] = None
-    profile_picture_url: Optional[str] = None
-    bio: Optional[str] = None
-    role: Optional[str] = "user"
 
 
-class UserResponse(BaseModel):
+class GetByUsernameResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int

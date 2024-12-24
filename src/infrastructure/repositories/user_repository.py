@@ -12,6 +12,3 @@ class UserRepository(BaseRepository[User], IUserRepository):
 
     async def get_by_username(self, username: str) -> Optional[User]:
         return (await self.db.scalars(select(User).where(User.username == username))).first()
-
-    async def get_by_email(self, email: str) -> Optional[User]:
-        return (await self.db.scalars(select(User).where(User.email == email))).first()

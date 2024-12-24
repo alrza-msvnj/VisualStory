@@ -1,41 +1,47 @@
 from typing import Annotated, List
-from fastapi import Depends, APIRouter, status
+from fastapi import Depends, APIRouter
 from src.application.contracts.user_service import IUserService
 from src.application.dependencies import get_user_service
-from src.application.dtos.user.user import UserResponse, UserRequest
+from src.application.dtos.user.add_user_dto import AddUserRequest, AddUserResponse
+from src.application.dtos.user.get_user_dto import GetUserRequest, GetUserResponse
+from src.application.dtos.user.get_all_user_dto import GetAllUserResponse
+from src.application.dtos.user.update_user_dto import UpdateUserRequest, UpdateUserResponse
+from src.application.dtos.user.delete_user_dto import DeleteUserRequest, DeleteUserResponse
+from src.application.dtos.user.get_by_username_dto import GetByUsernameRequest, GetByUsernameResponse
 
 
 class UserController:
     def __init__(self):
         self.router = APIRouter(prefix="/api/user", tags=["User"])
-        self.router.post("/", response_model=UserResponse)(self.add)
-        self.router.get("/{id}", response_model=UserResponse)(self.get)
-        self.router.get("/", response_model=List[UserResponse])(self.get_all)
-        self.router.put("/{id}", response_model=UserResponse)(self.update)
+        self.router.post("/", response_model=AddUserResponse)(self.add)
+        self.router.get("/{id}", response_model=GetUserResponse)(self.get)
+        self.router.get("/", response_model=List[GetAllUserResponse])(self.get_all)
+        self.router.put("/", response_model=UpdateUserResponse)(self.update)
         self.router.delete("/{id}")(self.delete)
-        self.router.get("/get_by_username/{username}", response_model=UserResponse)(self.get_by_username)
+        self.router.get("/get_by_username/{username}", response_model=GetByUsernameResponse)(self.get_by_username)
 
     @staticmethod
-    async def add(entity: UserRequest, service: Annotated[IUserService, Depends(get_user_service)]) -> UserResponse:
-        return await service.add(entity)
+    async def add(user: AddUserRequest, service: Annotated[IUserService, Depends(get_user_service)]) -> AddUserResponse:
+        return await service.add(user)
 
     @staticmethod
-    async def get(entity_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> UserResponse:
-        return await service.get(entity_id)
+    async def get(user_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> GetUserResponse:
+        return await service.get(GetUserRequest(id=user_id))
 
     @staticmethod
-    async def get_all(service: Annotated[IUserService, Depends(get_user_service)]) -> List[UserResponse]:
+    async def get_all(service: Annotated[IUserService, Depends(get_user_service)]) -> List[GetAllUserResponse]:
         return await service.get_all()
 
     @staticmethod
-    async def update(entity: UserRequest, service: Annotated[IUserService, Depends(get_user_service)]) -> UserResponse:
+    async def update(entity: UpdateUserRequest,
+                     service: Annotated[IUserService, Depends(get_user_service)]) -> UpdateUserResponse:
         return await service.update(entity)
 
     @staticmethod
-    async def delete(entity_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> bool:
-        return await service.delete(entity_id)
+    async def delete(entity_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> DeleteUserResponse:
+        return await service.delete(DeleteUserRequest(id=entity_id))
 
     @staticmethod
     async def get_by_username(username: str,
-                              user_service: Annotated[IUserService, Depends(get_user_service)]) -> UserResponse:
-        return await user_service.get_by_username(username)
+                              user_service: Annotated[IUserService, Depends(get_user_service)]) -> AddUserResponse:
+        return await user_service.get_by_username(GetByUsernameRequest(username=username))
