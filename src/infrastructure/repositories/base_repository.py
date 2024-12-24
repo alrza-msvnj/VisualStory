@@ -12,6 +12,8 @@ class BaseRepository(Generic[T], IBaseRepository[T]):
         self.model = model
 
     async def add(self, entity: T) -> T:
+        if entity.id == 0:
+            entity.id = None
         self.db.add(entity)
         await self.db.commit()
         await self.db.refresh(entity)
@@ -24,9 +26,16 @@ class BaseRepository(Generic[T], IBaseRepository[T]):
         return (await self.db.execute(select(self.model))).scalars().all()
 
     async def update(self, entity: T) -> T:
+        existed_entity = await self.get(entity.id)
+        if not existed_entity:
+            return None
+        for key in vars(entity).keys():
+            if not key.startswith("_") and hasattr(existed_entity, key):
+                value = getattr(entity, key)
+                setattr(existed_entity, key, value)
         await self.db.commit()
-        await self.db.refresh(entity)
-        return entity
+        await self.db.refresh(existed_entity)
+        return existed_entity
 
     async def delete(self, entity_id: int) -> bool:
         entity = await self.get(entity_id)

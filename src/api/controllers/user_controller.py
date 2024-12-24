@@ -12,7 +12,7 @@ class UserController:
         self.router.get("/{id}", response_model=UserResponse)(self.get)
         self.router.get("/", response_model=List[UserResponse])(self.get_all)
         self.router.put("/{id}", response_model=UserResponse)(self.update)
-        self.router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)(self.delete)
+        self.router.delete("/{id}")(self.delete)
         self.router.get("/get_by_username/{username}", response_model=UserResponse)(self.get_by_username)
 
     @staticmethod
@@ -32,8 +32,8 @@ class UserController:
         return await service.update(entity)
 
     @staticmethod
-    async def delete(entity_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> None:
-        await service.delete(entity_id)
+    async def delete(entity_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> bool:
+        return await service.delete(entity_id)
 
     @staticmethod
     async def get_by_username(username: str,

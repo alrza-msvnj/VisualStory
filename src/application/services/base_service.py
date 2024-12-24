@@ -15,7 +15,7 @@ class BaseService(Generic[T, U, V, W], IBaseService[T, U]):
         self.repository = repository
 
     async def add(self, entity: T) -> U:
-        entity = self.model(**self.request_dto.dict())
+        entity = self.model(**entity.dict())
         entity = await self.repository.add(entity)
         response = self.response_dto.model_validate(entity)
         return response
@@ -33,7 +33,7 @@ class BaseService(Generic[T, U, V, W], IBaseService[T, U]):
         return response
 
     async def update(self, entity: T) -> U:
-        entity = self.model(**self.request_dto.dict())
+        entity = self.model(**entity.dict())
         entity = await self.repository.update(entity)
         response = self.response_dto.model_validate(entity)
         return response

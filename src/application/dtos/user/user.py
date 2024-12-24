@@ -4,9 +4,10 @@ from pydantic import BaseModel, ConfigDict, constr, EmailStr
 
 
 class UserRequest(BaseModel):
-    username: constr(min_length=3, max_length=50)
+    id: Optional[int] = None
+    username: str
     email: EmailStr
-    password: constr(min_length=8, max_length=128)
+    password_hash: str
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     profile_picture_url: Optional[str] = None
