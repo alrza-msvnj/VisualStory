@@ -13,35 +13,35 @@ from src.application.dtos.user.get_by_username_dto import GetByUsernameRequest, 
 
 class UserService(IUserService):
     def __init__(self, db: AsyncSession):
-        self.repository = UserRepository(db)
+        self.user_repository = UserRepository(db)
 
     async def add(self, request: AddUserRequest) -> AddUserResponse:
         user = User(**request.model_dump())
-        user = await self.repository.add(user)
+        user = await self.user_repository.add(user)
         response = AddUserResponse.model_validate(user)
         return response
 
     async def get(self, request: GetUserRequest) -> GetUserResponse:
-        user = await self.repository.get(request.id)
+        user = await self.user_repository.get(request.id)
         response = GetUserResponse.model_validate(user)
         return response
 
     async def get_all(self) -> List[GetAllUserResponse]:
-        users = await self.repository.get_all()
+        users = await self.user_repository.get_all()
         response = [GetAllUserResponse.model_validate(user) for user in users]
         return response
 
     async def update(self, request: UpdateUserRequest) -> UpdateUserResponse:
         user = User(**request.model_dump())
-        user = await self.repository.update(user)
+        user = await self.user_repository.update(user)
         response = UpdateUserResponse.model_validate(user)
         return response
 
     async def delete(self, request: DeleteUserRequest) -> DeleteUserResponse:
-        response = await self.repository.delete(request.id)
+        response = await self.user_repository.delete(request.id)
         return DeleteUserResponse(deleted=response)
 
     async def get_by_username(self, request: GetByUsernameRequest) -> GetByUsernameResponse:
-        user = await self.repository.get_by_username(request.username)
+        user = await self.user_repository.get_by_username(request.username)
         response = GetByUsernameResponse.model_validate(user)
         return response
