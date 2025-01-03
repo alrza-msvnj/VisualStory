@@ -6,8 +6,7 @@
     <title>Visual Story</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 
@@ -27,13 +26,17 @@
             <img src="../assets/images/search.png" alt="">
             <input type="text" placeholder="Search">
         </div>
-        <div class="nav-user-icon online" onclick="settingsMenuToggle()">
+        <div class="nav-user-icon online">
             <img src="../assets/images/profile-pic.png" alt="">
         </div>
     </div>
 
     <!-- Settings Menu !-->
     <div class="settings-menu">
+        <div id="dark-btn">
+            <span></span>
+        </div>
+
         <div class="settings-menu-inner">
             <div class="user-profile">
                 <img src="../assets/images/profile-pic.png" alt="">
@@ -361,6 +364,7 @@
     </div>
 </div>
 
+<!-- Footer !-->
 <div class="footer">
     <p>Copyright 2021 - Easy Tutorials YouTube Channel</p>
 </div>
