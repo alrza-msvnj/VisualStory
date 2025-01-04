@@ -1,4 +1,4 @@
-from typing import Annotated, List
+from typing import List
 from fastapi import Depends, APIRouter
 from src.application.contracts.user_service import IUserService
 from src.application.dependencies import get_user_service
@@ -21,27 +21,25 @@ class UserController:
         self.router.get("/get_by_username/{username}", response_model=GetByUsernameResponse)(self.get_by_username)
 
     @staticmethod
-    async def add(user: AddUserRequest, service: Annotated[IUserService, Depends(get_user_service)]) -> AddUserResponse:
+    async def add(user: AddUserRequest, service: IUserService = Depends(get_user_service)) -> AddUserResponse:
         return await service.add(user)
 
     @staticmethod
-    async def get(user_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> GetUserResponse:
+    async def get(user_id: int, service: IUserService = Depends(get_user_service)) -> GetUserResponse:
         return await service.get(GetUserRequest(id=user_id))
 
     @staticmethod
-    async def get_all(service: Annotated[IUserService, Depends(get_user_service)]) -> List[GetAllUserResponse]:
+    async def get_all(service: IUserService = Depends(get_user_service)) -> List[GetAllUserResponse]:
         return await service.get_all()
 
     @staticmethod
-    async def update(entity: UpdateUserRequest,
-                     service: Annotated[IUserService, Depends(get_user_service)]) -> UpdateUserResponse:
+    async def update(entity: UpdateUserRequest, service: IUserService = Depends(get_user_service)) -> UpdateUserResponse:
         return await service.update(entity)
 
     @staticmethod
-    async def delete(entity_id: int, service: Annotated[IUserService, Depends(get_user_service)]) -> DeleteUserResponse:
+    async def delete(entity_id: int, service: IUserService = Depends(get_user_service)) -> DeleteUserResponse:
         return await service.delete(DeleteUserRequest(id=entity_id))
 
     @staticmethod
-    async def get_by_username(username: str,
-                              user_service: Annotated[IUserService, Depends(get_user_service)]) -> AddUserResponse:
+    async def get_by_username(username: str, user_service: IUserService = Depends(get_user_service)) -> AddUserResponse:
         return await user_service.get_by_username(GetByUsernameRequest(username=username))
