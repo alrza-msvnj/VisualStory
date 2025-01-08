@@ -33,12 +33,12 @@ class UserController:
         return await service.get_all()
 
     @staticmethod
-    async def update(entity: UpdateUserRequest, service: IUserService = Depends(get_user_service)) -> UpdateUserResponse:
-        return await service.update(entity)
+    async def update(user: UpdateUserRequest, service: IUserService = Depends(get_user_service)) -> UpdateUserResponse:
+        return await service.update(user)
 
     @staticmethod
-    async def delete(entity_id: int, service: IUserService = Depends(get_user_service)) -> DeleteUserResponse:
-        return await service.delete(DeleteUserRequest(id=entity_id))
+    async def delete(user_id: int, service: IUserService = Depends(get_user_service)) -> DeleteUserResponse:
+        return await service.delete(DeleteUserRequest(id=user_id))
 
     @staticmethod
     async def get_by_username(username: str, user_service: IUserService = Depends(get_user_service)) -> AddUserResponse:
