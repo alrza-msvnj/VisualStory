@@ -1,11 +1,10 @@
 import logging
 import sys
 import uvicorn
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from contextlib import asynccontextmanager
+from src.api.routes import router
 from src.api.controllers.user_controller import UserController
 from src.infrastructure.database import sessionmanager
 from src.infrastructure.settings import settings
@@ -25,20 +24,12 @@ async def lifespan(app: FastAPI):
         await sessionmanager.close()
 
 
+# General Setups
 app = FastAPI(lifespan=lifespan, title=settings.project_name, version='1.0')
 app.mount("/static", StaticFiles(directory="src/ui/static"), name="static")
 
-templates = Jinja2Templates(directory="src/ui/templates")
-
-
-@app.get("/", response_class=HTMLResponse)
-async def root(request: Request):
-    return templates.TemplateResponse(request=request, name="index.html")
-# async def read_item(request: Request, id: str):
-#     return templates.TemplateResponse(
-#         request=request, name="item.html", context={"id": id}
-#     )
-
+# Route Setups
+app.include_router(router)
 app.include_router(UserController().router)
 
 if __name__ == '__main__':
