@@ -25,3 +25,8 @@ async def login(request: Request):
 @router.get("/register", response_class=HTMLResponse)
 async def register(request: Request):
     return templates.TemplateResponse(request=request, name="register.html")
+
+
+@router.get("/profile", response_class=HTMLResponse)
+async def profile(request: Request):
+    return templates.TemplateResponse(request=request, name="profile.html")
