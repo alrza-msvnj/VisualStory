@@ -1,44 +1,50 @@
 $(document).ready(function () {
+    debugger;
+    checkDarkMode();
     initClickEvents();
 });
 
 
 function initClickEvents() {
-    // dark mode btn
-    let darkModeBtn = $('#dark-btn');
-    darkModeBtn.on('click', toggleDarkMode);
+    $('#dark-mode-btn').click(function () {
+        toggleDarkMode('dark-mode-btn');
+    });
+    $('#light-mode-btn').click(function () {
+        toggleDarkMode('light-mode-btn');
+    });
+}
 
-    let theme = localStorage.getItem('theme');
+function checkDarkMode() {
+    const theme = localStorage.getItem('theme');
     if (theme === 'light') {
-        darkModeBtn.removeClass('dark-btn-on');
         $('body').removeClass('dark-theme');
+        $('#light-mode-btn').remove();
+        if ($('#dark-mode-btn').length === 0) {
+            $('<li id="dark-mode-btn"><a href="#"><i class="bi bi-moon-stars"></i></a></li>').insertBefore($('#nav-buttons li:eq(1)')); // Insert before the second <li>
+            $('#dark-mode-btn').click(function () {
+                toggleDarkMode('dark-mode-btn');
+            })
+        }
+
     } else if (theme === 'dark') {
-        darkModeBtn.addClass('dark-btn-on');
         $('body').addClass('dark-theme');
-    } else {
-        localStorage.setItem('theme', 'light');
+        $('#dark-mode-btn').remove();
+        let b = $('#dark-mode-btn')
+        if ($('#light-mode-btn').length === 0) {
+            $('<li id="light-mode-btn"><a href="#"><i class="bi bi-brightness-high" style="font-size: 16px;position: relative; top: 0.5px;"></i></a></li>').insertBefore($('#nav-buttons li:eq(1)')); // Insert before the second <li>
+            $('#light-mode-btn').click(function () {
+                toggleDarkMode('light-mode-btn');
+            })
+        }
     }
-
-    // settings menu
-    let settingsMenu = $('.nav-user-icon.online');
-    settingsMenu.on('click', settingsMenuToggle);
 }
 
-function settingsMenuToggle() {
-    let settingsMenu = $('.settings-menu');
-    settingsMenu.toggleClass('settings-menu-height');
-}
-
-function toggleDarkMode() {
-    let darkModeBtn = $('#dark-btn');
-    darkModeBtn.toggleClass('dark-btn-on');
-
-    let body = $('body');
-    body.toggleClass('dark-theme');
-
-    if (localStorage.getItem('theme') === 'light') {
+function toggleDarkMode(elementId) {
+    debugger;
+    if (elementId === 'dark-mode-btn') {
         localStorage.setItem('theme', 'dark');
-    } else {
+    } else if (elementId === 'light-mode-btn') {
         localStorage.setItem('theme', 'light');
     }
+    checkDarkMode();
 }

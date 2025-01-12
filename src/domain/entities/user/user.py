@@ -11,8 +11,6 @@ class User(BaseEntity):
     password_hash: Mapped[str] = mapped_column(nullable=False)
     first_name: Mapped[str] = mapped_column(nullable=True)
     last_name: Mapped[str] = mapped_column(nullable=True)
-    profile_picture_url: Mapped[str] = mapped_column(nullable=True)
-    bio: Mapped[str] = mapped_column(nullable=True)
     join_date: Mapped[datetime] = mapped_column(default=datetime.now())
     last_login: Mapped[datetime] = mapped_column(default=datetime.now())
     is_active: Mapped[bool] = mapped_column(nullable=True, default=True)

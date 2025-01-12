@@ -16,11 +16,9 @@ class Post(BaseEntity):
     
     # Foreign key relationship with User
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=False)
-    user: Mapped[User] = relationship("User", back_populates="posts")
+    user: Mapped[User] = relationship('User', back_populates='posts')
     
     likes_count: Mapped[int] = mapped_column(default=0)
-    comments_count: Mapped[int] = mapped_column(default=0)
-    
     is_published: Mapped[bool] = mapped_column(default=True)
     is_deleted: Mapped[bool] = mapped_column(default=False)
     

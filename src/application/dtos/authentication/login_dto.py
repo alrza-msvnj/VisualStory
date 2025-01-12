@@ -1,9 +1,11 @@
 from pydantic import BaseModel
+from src.application.dtos.base_response_dto import BaseResponseDto
 
 
 class LoginRequest(BaseModel):
-    pass
+    username: str
+    password: str
 
 
-class LoginResponse(BaseModel):
-    pass
+class LoginResponse(BaseResponseDto):
+    value: str

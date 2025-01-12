@@ -13,126 +13,135 @@
 <!-- Navigation Bar !-->
 <nav>
     <div class="nav-left">
-        <img src="../static/assets/images/logo.png" class="logo">
-        <ul>
-            <li><img src="../static/assets/images/notification.png" alt=""></li>
-            <li><img src="../static/assets/images/inbox.png" alt=""></li>
-            <li><img src="../static/assets/images/video.png" alt=""></li>
+        <img src="../static/assets/images/visual_story_logo.png" alt="" class="logo">
+    </div>
+
+    <div class="nav-center">
+        <ul class="nav-links">
+            <li><a href="#"><i class="bi bi-house"></i></a></li>
+            <li><a href="#"><i class="bi bi-search"></i></a></li>
         </ul>
     </div>
 
     <div class="nav-right">
-        <div class="search-box">
-            <img src="../static/assets/images/search.png" alt="">
-            <input type="text" placeholder="Search">
-        </div>
+        <!--        <div class="search-box">-->
+        <!--            <img src="../static/assets/images/search.png" alt="">-->
+        <!--            <input type="text" placeholder="Search">-->
+        <!--        </div>-->
+        <ul id="nav-buttons">
+            <li><a href="#"><i class="bi bi-bell"></i></a></li>
+            <li><a href="#"><i class="bi bi-box-arrow-in-left"
+                               style="font-size: 20px; position: relative; top: 1.5px;"></i></a></li>
+        </ul>
         <div class="nav-user-icon online">
-            <img src="../static/assets/images/profile-pic.png" alt="">
+            <img src="../static/assets/images/default-avatar.png" alt="">
         </div>
     </div>
 
     <!-- Settings Menu !-->
-    <div class="settings-menu">
-        <div id="dark-btn">
-            <span></span>
-        </div>
+    <!--    <div class="settings-menu">-->
+    <!--        <div id="dark-btn">-->
+    <!--            <span></span>-->
+    <!--        </div>-->
 
-        <div class="settings-menu-inner">
-            <div class="user-profile">
-                <img src="../static/assets/images/profile-pic.png" alt="">
-                <div>
-                    <p>John Nicholson</p>
-                    <a href="#">See your profile</a>
-                </div>
-            </div>
-            <hr>
+    <!--        <div class="settings-menu-inner">-->
+    <!--            <div class="user-profile">-->
+    <!--                <img src="../static/assets/images/profile-pic.png" alt="">-->
+    <!--                <div>-->
+    <!--                    <p>John Nicholson</p>-->
+    <!--                    <a href="#">See your profile</a>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <hr>-->
 
-            <div class="user-profile">
-                <img src="../static/assets/images/feedback.png" alt="">
-                <div>
-                    <p>Give Feedback</p>
-                    <a href="#">Help us to improve the new design</a>
-                </div>
-            </div>
-            <hr>
+    <!--            <div class="user-profile">-->
+    <!--                <img src="../static/assets/images/feedback.png" alt="">-->
+    <!--                <div>-->
+    <!--                    <p>Give Feedback</p>-->
+    <!--                    <a href="#">Help us to improve the new design</a>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <hr>-->
 
-            <div class="settings-links">
-                <img src="../static/assets/images/setting.png" alt="" class="settings-icon">
-                <a href="#">Settings & Privacy <img src="../static/assets/images/arrow.png" alt="" width="10px"></a>
-            </div>
+    <!--            <div class="settings-links">-->
+    <!--                <img src="../static/assets/images/setting.png" alt="" class="settings-icon">-->
+    <!--                <a href="#">Settings & Privacy <img src="../static/assets/images/arrow.png" alt="" width="10px"></a>-->
+    <!--            </div>-->
 
-            <div class="settings-links">
-                <img src="../static/assets/images/help.png" alt="" class="settings-icon">
-                <a href="#">Help & Support <img src="../static/assets/images/arrow.png" alt="" width="10px"></a>
-            </div>
+    <!--            <div class="settings-links">-->
+    <!--                <img src="../static/assets/images/help.png" alt="" class="settings-icon">-->
+    <!--                <a href="#">Help & Support <img src="../static/assets/images/arrow.png" alt="" width="10px"></a>-->
+    <!--            </div>-->
 
-            <div class="settings-links">
-                <img src="../static/assets/images/display.png" alt="" class="settings-icon">
-                <a href="#">Display & Accessibility <img src="../static/assets/images/arrow.png" alt="" width="10px"></a>
-            </div>
+    <!--            <div class="settings-links">-->
+    <!--                <img src="../static/assets/images/display.png" alt="" class="settings-icon">-->
+    <!--                <a href="#">Display & Accessibility <img src="../static/assets/images/arrow.png" alt=""-->
+    <!--                                                         width="10px"></a>-->
+    <!--            </div>-->
 
-            <div class="settings-links">
-                <img src="../static/assets/images/logout.png" alt="" class="settings-icon">
-                <a href="{{ url_for('login') }}">Logout <img src="../static/assets/images/arrow.png" alt="" width="10px"></a>
-            </div>
-        </div>
-    </div>
+    <!--            <div class="settings-links">-->
+    <!--                <img src="../static/assets/images/logout.png" alt="" class="settings-icon">-->
+    <!--                <a href="{{ url_for('login') }}">Logout <img src="../static/assets/images/arrow.png" alt=""-->
+    <!--                                                             width="10px"></a>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </nav>
 
 <div class="container">
 
     <!-- Left Sidebar !-->
-    <div class="left-sidebar">
-        <div class="imp-links">
-            <a href="#"><img src="../static/assets/images/news.png" alt=""> Latest News</a>
-            <a href="#"><img src="../static/assets/images/friends.png" alt=""> Friends</a>
-            <a href="#"><img src="../static/assets/images/group.png" alt=""> Group</a>
-            <a href="#"><img src="../static/assets/images/marketplace.png" alt=""> Marketplace</a>
-            <a href="#"><img src="../static/assets/images/watch.png" alt=""> Watch</a>
-            <a href="#">See More</a>
-        </div>
+    <!--    <div class="left-sidebar">-->
+    <!--        <div class="imp-links">-->
+    <!--            <a href="#"><img src="../static/assets/images/news.png" alt=""> Latest News</a>-->
+    <!--            <a href="#"><img src="../static/assets/images/friends.png" alt=""> Friends</a>-->
+    <!--            <a href="#"><img src="../static/assets/images/group.png" alt=""> Group</a>-->
+    <!--            <a href="#"><img src="../static/assets/images/marketplace.png" alt=""> Marketplace</a>-->
+    <!--            <a href="#"><img src="../static/assets/images/watch.png" alt=""> Watch</a>-->
+    <!--            <a href="#">See More</a>-->
+    <!--        </div>-->
 
-        <div class="shortcut-links">
-            <p>Your Shortcuts</p>
-            <a href="#"><img src="../static/assets/images/shortcut-1.png" alt=""> Web Developers</a>
-            <a href="#"><img src="../static/assets/images/shortcut-2.png" alt=""> Web Design Course</a>
-            <a href="#"><img src="../static/assets/images/shortcut-3.png" alt=""> Full-Stack Development</a>
-            <a href="#"><img src="../static/assets/images/shortcut-4.png" alt=""> Website Experts</a>
-        </div>
-    </div>
+    <!--        <div class="shortcut-links">-->
+    <!--            <p>Your Shortcuts</p>-->
+    <!--            <a href="#"><img src="../static/assets/images/shortcut-1.png" alt=""> Web Developers</a>-->
+    <!--            <a href="#"><img src="../static/assets/images/shortcut-2.png" alt=""> Web Design Course</a>-->
+    <!--            <a href="#"><img src="../static/assets/images/shortcut-3.png" alt=""> Full-Stack Development</a>-->
+    <!--            <a href="#"><img src="../static/assets/images/shortcut-4.png" alt=""> Website Experts</a>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
     <!-- Main Content !-->
     <div class="main-content">
-        <div class="story-gallery">
-            <div class="story story1">
-                <img src="../static/assets/images/upload.png" alt="">
-                <p>Post Story</p>
-            </div>
+        <!--        <div class="story-gallery">-->
+        <!--            <div class="story story1">-->
+        <!--                <img src="../static/assets/images/upload.png" alt="">-->
+        <!--                <p>Post Story</p>-->
+        <!--            </div>-->
 
-            <div class="story story2">
-                <img src="../static/assets/images/member-1.png" alt="">
-                <p>Alison</p>
-            </div>
+        <!--            <div class="story story2">-->
+        <!--                <img src="../static/assets/images/member-1.png" alt="">-->
+        <!--                <p>Alison</p>-->
+        <!--            </div>-->
 
-            <div class="story story3">
-                <img src="../static/assets/images/member-2.png" alt="">
-                <p>Jackson</p>
-            </div>
+        <!--            <div class="story story3">-->
+        <!--                <img src="../static/assets/images/member-2.png" alt="">-->
+        <!--                <p>Jackson</p>-->
+        <!--            </div>-->
 
-            <div class="story story4">
-                <img src="../static/assets/images/member-3.png" alt="">
-                <p>Samona</p>
-            </div>
+        <!--            <div class="story story4">-->
+        <!--                <img src="../static/assets/images/member-3.png" alt="">-->
+        <!--                <p>Samona</p>-->
+        <!--            </div>-->
 
-            <div class="story story5">
-                <img src="../static/assets/images/member-4.png" alt="">
-                <p>John Doe</p>
-            </div>
-        </div>
+        <!--            <div class="story story5">-->
+        <!--                <img src="../static/assets/images/member-4.png" alt="">-->
+        <!--                <p>John Doe</p>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
         <div class="write-post-container">
             <div class="user-profile">
-                <img src="../static/assets/images/profile-pic.png" alt="">
+                <img src="../static/assets/images/default-avatar.png" alt="">
                 <div>
                     <p>John Nicholson</p>
                     <small>Public <i class="bi bi-caret-down-fill"></i></small>
@@ -142,17 +151,18 @@
             <div class="post-input-container">
                 <textarea rows="3" placeholder="What's on your mind, John?"></textarea>
                 <div class="add-post-links">
-                    <a href="#"><img src="../static/assets/images/live-video.png" alt=""> Live Video</a>
-                    <a href="#"><img src="../static/assets/images/photo.png" alt=""> Photo/Video</a>
-                    <a href="#"><img src="../static/assets/images/feeling.png" alt=""> Feeling/Activity</a>
+                    <a href="#"><i class="bi bi-image-fill"></i></a>
+                    <a href="#"><i class="bi bi-tag-fill"></i></a>
                 </div>
             </div>
+
+            <button type="submit" class="add-post-btn">Post</button>
         </div>
 
         <div class="post-container">
             <div class="post-row">
                 <div class="user-profile">
-                    <img src="../static/assets/images/profile-pic.png" alt="">
+                    <img src="../static/assets/images/default-avatar.png" alt="">
                     <div>
                         <p>John Nicholson</p>
                         <span>June 24 2021, 13:40 pm</span>
@@ -172,16 +182,16 @@
                     <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
                     <div><img src="../static/assets/images/share.png" alt=""> 20</div>
                 </div>
-                <div class="post-profile-icon">
-                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>
-                </div>
+                <!--                <div class="post-profile-icon">-->
+                <!--                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
+                <!--                </div>-->
             </div>
         </div>
 
         <div class="post-container">
             <div class="post-row">
                 <div class="user-profile">
-                    <img src="../static/assets/images/profile-pic.png" alt="">
+                    <img src="../static/assets/images/default-avatar.png" alt="">
                     <div>
                         <p>John Nicholson</p>
                         <span>June 24 2021, 13:40 pm</span>
@@ -201,16 +211,16 @@
                     <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
                     <div><img src="../static/assets/images/share.png" alt=""> 20</div>
                 </div>
-                <div class="post-profile-icon">
-                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>
-                </div>
+                <!--                <div class="post-profile-icon">-->
+                <!--                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
+                <!--                </div>-->
             </div>
         </div>
 
         <div class="post-container">
             <div class="post-row">
                 <div class="user-profile">
-                    <img src="../static/assets/images/profile-pic.png" alt="">
+                    <img src="../static/assets/images/default-avatar.png" alt="">
                     <div>
                         <p>John Nicholson</p>
                         <span>June 24 2021, 13:40 pm</span>
@@ -230,16 +240,16 @@
                     <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
                     <div><img src="../static/assets/images/share.png" alt=""> 20</div>
                 </div>
-                <div class="post-profile-icon">
-                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>
-                </div>
+                <!--                <div class="post-profile-icon">-->
+                <!--                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
+                <!--                </div>-->
             </div>
         </div>
 
         <div class="post-container">
             <div class="post-row">
                 <div class="user-profile">
-                    <img src="../static/assets/images/profile-pic.png" alt="">
+                    <img src="../static/assets/images/default-avatar.png" alt="">
                     <div>
                         <p>John Nicholson</p>
                         <span>June 24 2021, 13:40 pm</span>
@@ -259,16 +269,16 @@
                     <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
                     <div><img src="../static/assets/images/share.png" alt=""> 20</div>
                 </div>
-                <div class="post-profile-icon">
-                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>
-                </div>
+                <!--                <div class="post-profile-icon">-->
+                <!--                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
+                <!--                </div>-->
             </div>
         </div>
 
         <div class="post-container">
             <div class="post-row">
                 <div class="user-profile">
-                    <img src="../static/assets/images/profile-pic.png" alt="">
+                    <img src="../static/assets/images/default-avatar.png" alt="">
                     <div>
                         <p>John Nicholson</p>
                         <span>June 24 2021, 13:40 pm</span>
@@ -288,9 +298,9 @@
                     <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
                     <div><img src="../static/assets/images/share.png" alt=""> 20</div>
                 </div>
-                <div class="post-profile-icon">
-                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>
-                </div>
+                <!--                <div class="post-profile-icon">-->
+                <!--                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
+                <!--                </div>-->
             </div>
         </div>
 
@@ -298,70 +308,70 @@
     </div>
 
     <!-- Right Sidebar !-->
-    <div class="right-sidebar">
-        <div class="sidebar-title">
-            <h4>Events</h4>
-            <a href="#">See All</a>
-        </div>
+    <!--    <div class="right-sidebar">-->
+    <!--        <div class="sidebar-title">-->
+    <!--            <h4>Events</h4>-->
+    <!--            <a href="#">See All</a>-->
+    <!--        </div>-->
 
-        <div class="event">
-            <div class="left-event">
-                <h3>18</h3>
-                <span>March</span>
-            </div>
+    <!--        <div class="event">-->
+    <!--            <div class="left-event">-->
+    <!--                <h3>18</h3>-->
+    <!--                <span>March</span>-->
+    <!--            </div>-->
 
-            <div class="right-event">
-                <h4>Social Media</h4>
-                <p><i class="bi bi-geo-alt-fill"></i> Wilson Tech Park</p>
-                <a href="#">More Info</a>
-            </div>
-        </div>
+    <!--            <div class="right-event">-->
+    <!--                <h4>Social Media</h4>-->
+    <!--                <p><i class="bi bi-geo-alt-fill"></i> Wilson Tech Park</p>-->
+    <!--                <a href="#">More Info</a>-->
+    <!--            </div>-->
+    <!--        </div>-->
 
-        <div class="event">
-            <div class="left-event">
-                <h3>22</h3>
-                <span>June</span>
-            </div>
+    <!--        <div class="event">-->
+    <!--            <div class="left-event">-->
+    <!--                <h3>22</h3>-->
+    <!--                <span>June</span>-->
+    <!--            </div>-->
 
-            <div class="right-event">
-                <h4>Mobile Marketing</h4>
-                <p><i class="bi bi-geo-alt-fill"></i> Wilson Tech Park</p>
-                <a href="#">More Info</a>
-            </div>
-        </div>
+    <!--            <div class="right-event">-->
+    <!--                <h4>Mobile Marketing</h4>-->
+    <!--                <p><i class="bi bi-geo-alt-fill"></i> Wilson Tech Park</p>-->
+    <!--                <a href="#">More Info</a>-->
+    <!--            </div>-->
+    <!--        </div>-->
 
-        <div class="sidebar-title">
-            <h4>Advertisement</h4>
-            <a href="#">Close</a>
-        </div>
-        <img src="../static/assets/images/advertisement.png" alt="" class="sidebar-ads">
+    <!--        <div class="sidebar-title">-->
+    <!--            <h4>Advertisement</h4>-->
+    <!--            <a href="#">Close</a>-->
+    <!--        </div>-->
+    <!--        <img src="../static/assets/images/advertisement.png" alt="" class="sidebar-ads">-->
 
-        <div class="sidebar-title">
-            <h4>Conversation</h4>
-            <a href="#">Hide Chat</a>
-        </div>
+    <!--        <div class="sidebar-title">-->
+    <!--            <h4>Conversation</h4>-->
+    <!--            <a href="#">Hide Chat</a>-->
+    <!--        </div>-->
 
-        <div class="online-list">
-            <div class="online">
-                <img src="../static/assets/images/member-1.png" alt="">
-            </div>
-            <p>Alison Mina</p>
-        </div>
+    <!--        <div class="online-list">-->
+    <!--            <div class="online">-->
+    <!--                <img src="../static/assets/images/member-1.png" alt="">-->
+    <!--            </div>-->
+    <!--            <p>Alison Mina</p>-->
+    <!--        </div>-->
 
-        <div class="online-list">
-            <div class="online">
-                <img src="../static/assets/images/member-2.png" alt="">
-            </div>
-            <p>Jackson Aston</p>
-        </div>
+    <!--        <div class="online-list">-->
+    <!--            <div class="online">-->
+    <!--                <img src="../static/assets/images/member-2.png" alt="">-->
+    <!--            </div>-->
+    <!--            <p>Jackson Aston</p>-->
+    <!--        </div>-->
 
-        <div class="online-list">
-            <div class="online">
-                <img src="../static/assets/images/member-3.png" alt="">
-            </div>
-            <p>Samona Rose</p>
-        </div>
-    </div>
+    <!--        <div class="online-list">-->
+    <!--            <div class="online">-->
+    <!--                <img src="../static/assets/images/member-3.png" alt="">-->
+    <!--            </div>-->
+    <!--            <p>Samona Rose</p>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
 
 <!-- Footer !-->

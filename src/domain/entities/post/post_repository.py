@@ -21,7 +21,3 @@ class IPostRepository(IBaseRepository[Post], ABC):
     @abstractmethod
     async def update_likes_count(self, post_id: int, increment: bool = True) -> Post:
         pass
-    
-    @abstractmethod
-    async def update_comments_count(self, post_id: int, increment: bool = True) -> Post:
-        pass
