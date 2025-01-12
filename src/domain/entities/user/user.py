@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.domain.entities.base_entity import BaseEntity
 
 
@@ -17,3 +17,5 @@ class User(BaseEntity):
     last_login: Mapped[datetime] = mapped_column(default=datetime.now())
     is_active: Mapped[bool] = mapped_column(nullable=True, default=True)
     role: Mapped[str] = mapped_column(nullable=True, default='user')
+    
+    posts: Mapped[list["Post"]] = relationship("Post", back_populates="user", cascade="all, delete-orphan")
