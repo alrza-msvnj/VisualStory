@@ -8,10 +8,11 @@ function initClickEvents() {
     let darkModeBtn = $('#dark-btn');
     darkModeBtn.on('click', toggleDarkMode);
 
-    if (localStorage.getItem('theme') === 'light') {
+    let theme = localStorage.getItem('theme');
+    if (theme === 'light') {
         darkModeBtn.removeClass('dark-btn-on');
         $('body').removeClass('dark-theme');
-    } else if (localStorage.getItem('theme') === 'dark') {
+    } else if (theme === 'dark') {
         darkModeBtn.addClass('dark-btn-on');
         $('body').addClass('dark-theme');
     } else {

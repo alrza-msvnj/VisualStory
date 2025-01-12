@@ -123,3 +123,18 @@ class AuthenticationService(IAuthenticationService):
             'iat': datetime.utcnow()
         }
         return jwt.encode(payload, self.secret_key, algorithm="HS256")
+
+    async def register(self, request: RegisterRequest) -> RegisterResponse:
+        pass
+
+    async def login(self, request: LoginRequest) -> LoginResponse:
+        pass
+
+    async def logout(self, request: LogoutRequest) -> LogoutResponse:
+        pass
+
+    async def create_session(self, request: CreateSessionRequest) -> CreateSessionResponse:
+        pass
+
+    async def validate_session(self, request: ValidateSessionRequest) -> ValidateSessionResponse:
+        pass

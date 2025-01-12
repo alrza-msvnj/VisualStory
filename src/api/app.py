@@ -2,7 +2,9 @@ import logging
 import sys
 import uvicorn
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
+from src.api.routes import router
 from src.api.controllers.user_controller import UserController
 from src.infrastructure.database import sessionmanager
 from src.infrastructure.settings import settings
@@ -22,14 +24,12 @@ async def lifespan(app: FastAPI):
         await sessionmanager.close()
 
 
+# General Setups
 app = FastAPI(lifespan=lifespan, title=settings.project_name, version='1.0')
+app.mount("/static", StaticFiles(directory="src/ui/static"), name="static")
 
-
-@app.get("/")
-async def root():
-    return {'message': 'Welcome to VisualStory!'}
-
-
+# Route Setups
+app.include_router(router)
 app.include_router(UserController().router)
 
 if __name__ == '__main__':
