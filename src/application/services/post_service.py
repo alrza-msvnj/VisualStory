@@ -1,7 +1,7 @@
 from typing import List
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.domain.entities.post.post import Post
-from src.infrastructure.repositories.post_repository import PostRepository
+# from src.infrastructure.repositories.post_repository import PostRepository
 from src.application.contracts.post_service import IPostService
 from src.application.dtos.post.add_post_dto import AddPostRequest, AddPostResponse
 from src.application.dtos.post.get_post_dto import GetPostRequest, GetPostResponse

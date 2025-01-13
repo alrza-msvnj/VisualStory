@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 from src.application.dtos.base_response_dto import BaseResponseDto
 
@@ -8,4 +9,4 @@ class LoginRequest(BaseModel):
 
 
 class LoginResponse(BaseResponseDto):
-    value: str
+    value: Optional[str] = None

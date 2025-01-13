@@ -2,7 +2,7 @@ from fastapi import Depends, APIRouter, Response
 from src.application.contracts.authentication_service import IAuthenticationService
 from src.application.dependencies import get_authentication_service
 from src.application.dtos.authentication.register_dto import RegisterRequest, RegisterResponse
-from src.application.dtos.authentication.login_dto import LoginRequest, LoginResponse
+from src.application.dtos.authentication.login_dto import LoginRequest
 
 
 class AuthenticationController:
@@ -21,6 +21,9 @@ class AuthenticationController:
     async def login(response: Response, dto: LoginRequest,
                     service: IAuthenticationService = Depends(get_authentication_service)):
         login_response = await service.login(dto)
+        if not login_response.success:
+            return {"success": False, "message": login_response.message}
+
         response.set_cookie(
             key="session",
             value=login_response.value,
