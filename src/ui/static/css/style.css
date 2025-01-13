@@ -97,7 +97,7 @@ nav {
     margin-top: 4px;
 }
 
-.nav-right a {
+.nav-right li a {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
@@ -105,7 +105,7 @@ nav {
     padding: 12px 1px;
 }
 
-.nav-right a:hover {
+.nav-right li a:hover {
     background-color: #efefef;
     color: #000;
     transition: background-color 0.3s;

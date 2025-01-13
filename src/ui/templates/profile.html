@@ -18,7 +18,7 @@
 
     <div class="nav-center">
         <ul class="nav-links">
-            <li><a href="#"><i class="bi bi-house"></i></a></li>
+            <li><a href="{{ url_for('root') }}"><i class="bi bi-house"></i></a></li>
             <li><a href="#"><i class="bi bi-search"></i></a></li>
         </ul>
     </div>
@@ -30,11 +30,11 @@
         <!--        </div>-->
         <ul id="nav-buttons">
             <li><a href="#"><i class="bi bi-bell"></i></a></li>
-            <li><a href="#"><i class="bi bi-box-arrow-in-left"
+            <li><a href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-left"
                                style="font-size: 20px; position: relative; top: 1.5px;"></i></a></li>
         </ul>
         <div class="nav-user-icon online">
-            <img src="../static/assets/images/default-avatar.png" alt="">
+            <a href="{{ url_for('profile') }}"><img src="../static/assets/images/default-avatar.png" alt=""></a>
         </div>
     </div>
 
