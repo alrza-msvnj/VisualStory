@@ -86,6 +86,11 @@ input[type="password"] {
     gap: 10px;
 }
 
+.button-group a {
+    text-decoration: none;
+    text-align: center;
+}
+
 .register-btn {
     width: 100%;
     background-color: #007bff;
