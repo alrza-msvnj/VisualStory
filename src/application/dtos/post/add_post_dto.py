@@ -1,19 +1,18 @@
-from pydantic import BaseModel
-from typing import Optional, List
+from pydantic import BaseModel, ConfigDict
+from typing import Optional
 from datetime import datetime
 
 class AddPostRequest(BaseModel):
-    caption: Optional[str]
-    media_urls: List[str]
-    media_type: str
+    content: str
     user_id: int
-    location: Optional[str]
-    tags: Optional[List[str]]
-    visibility: str = 'public'
 
 class AddPostResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
-    caption: Optional[str]
-    media_urls: List[str]
-    user_id: int
+    content: str
+    image_url: Optional[str]
     created_at: datetime
+    updated_at: datetime
+    user_id: int
+    is_deleted: bool

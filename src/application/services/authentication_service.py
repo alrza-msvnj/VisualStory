@@ -1,4 +1,6 @@
+import os
 import bcrypt
+from dotenv import load_dotenv
 from itsdangerous import URLSafeTimedSerializer
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.infrastructure.repositories.user_repository import UserRepository
@@ -8,12 +10,13 @@ from src.application.dtos.authentication.register_dto import RegisterRequest, Re
 from src.application.dtos.authentication.login_dto import LoginRequest, LoginResponse
 from src.domain.entities.user.user import User
 
+load_dotenv()
+
 
 class AuthenticationService(IAuthenticationService):
     def __init__(self, db: AsyncSession):
         self.user_repository = UserRepository(db)
-        self.secret_key = '67603203c90edeb046455080b71520ee79594320b31edc915f4337eb4accdc8e'
-        self.serializer = URLSafeTimedSerializer(self.secret_key)
+        self.serializer = URLSafeTimedSerializer(os.getenv('SECRET_KEY'))
 
     async def register(self, request: RegisterRequest) -> RegisterResponse:
         # Check if user already exists

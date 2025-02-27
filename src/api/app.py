@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
+from src.api.controllers.post_controller import PostController
 from src.api.routes import router
 from src.api.controllers.authentication_controller import AuthenticationController
 from src.api.controllers.user_controller import UserController
@@ -33,6 +34,7 @@ app.mount("/static", StaticFiles(directory="src/ui/static"), name="static")
 app.include_router(router)
 app.include_router(UserController().router)
 app.include_router(AuthenticationController().router)
+app.include_router(PostController().router)
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)

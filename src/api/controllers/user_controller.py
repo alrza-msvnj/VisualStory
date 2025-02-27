@@ -21,8 +21,8 @@ class UserController:
         self.router.get("/get_by_username/{username}", response_model=GetByUsernameResponse)(self.get_by_username)
 
     @staticmethod
-    async def add(user: AddUserRequest, service: IUserService = Depends(get_user_service)) -> AddUserResponse:
-        return await service.add(user)
+    async def add(request: AddUserRequest, service: IUserService = Depends(get_user_service)) -> AddUserResponse:
+        return await service.add(request)
 
     @staticmethod
     async def get(user_id: int, service: IUserService = Depends(get_user_service)) -> GetUserResponse:
@@ -33,8 +33,8 @@ class UserController:
         return await service.get_all()
 
     @staticmethod
-    async def update(user: UpdateUserRequest, service: IUserService = Depends(get_user_service)) -> UpdateUserResponse:
-        return await service.update(user)
+    async def update(request: UpdateUserRequest, service: IUserService = Depends(get_user_service)) -> UpdateUserResponse:
+        return await service.update(request)
 
     @staticmethod
     async def delete(user_id: int, service: IUserService = Depends(get_user_service)) -> DeleteUserResponse:

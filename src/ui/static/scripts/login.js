@@ -1,29 +1,6 @@
 $(document).ready(function () {
-    debugger;
     checkDarkMode();
-    $('#loginBtn').click(function () {
-      // Serialize form data into an object (dictionary)
-      const formData = {};
-      $('#loginForm').serializeArray().forEach(item => {
-        formData[item.name] = item.value;
-      });
-
-      // Send the dictionary as JSON using jQuery's $.ajax
-      $.ajax({
-        url: '/api/authentication/login', // API endpoint
-        type: 'POST',                     // HTTP method
-        contentType: 'application/json',  // Data type being sent
-        data: JSON.stringify(formData),   // Convert dictionary to JSON
-        success: function (response) {
-          console.log('Login successful:', response);
-          // Handle success (e.g., redirect or show success message)
-        },
-        error: function (xhr, status, error) {
-          console.error('Login failed:', status, error);
-          // Handle failure (e.g., show error message)
-        }
-      });
-    });
+    initClickEvents();
 });
 
 
@@ -34,4 +11,44 @@ function checkDarkMode() {
     } else if (theme === 'dark') {
         $('body').addClass('dark-theme');
     }
+}
+
+function initClickEvents() {
+    $('#loginBtn').click(login);
+}
+
+function login() {
+    // Serialize form data into an object (dictionary)
+    const formData = {};
+    $('#loginForm').serializeArray().forEach(item => {
+        formData[item.name] = item.value;
+    });
+
+    // Send the dictionary as JSON using jQuery's $.ajax
+    $.ajax({
+        url: '/api/authentication/login',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function (response, status, xhr) {
+            console.log('Login successful:', response);
+
+            let sessionId = xhr.getResponseHeader("session_id");
+            if (sessionId) {
+                // Store it in a cookie (valid for 1 day)
+                document.cookie = `session_id=${sessionId}; path=/; Secure; HttpOnly; SameSite=Lax`;
+            }
+
+            // check if the response contains a redirect URL
+            var redirectUrl = xhr.getResponseHeader("X-Redirect-To");
+            if (redirectUrl) {
+                window.location.href = redirectUrl;  // Redirect to the new page
+            } else {
+                location.reload();  // If no redirect, just refresh
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Login failed:', status, error);
+        }
+    });
 }

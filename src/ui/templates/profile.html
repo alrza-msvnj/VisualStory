@@ -30,8 +30,12 @@
         <!--        </div>-->
         <ul id="nav-buttons">
             <!--            <li><a href="#"><i class="bi bi-bell"></i></a></li>-->
-            <li><a href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-left"
+            <li><a id="loginBtn" href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-left"
                                                     style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
+            </li>
+            <li>
+                <a id="logoutBtn" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"
+                                                     style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
             </li>
         </ul>
         <div class="nav-user-icon online">
@@ -216,129 +220,9 @@
 
                 <div class="post-row">
                     <div class="activity-icons">
-                        <div><img src="../static/assets/images/like-blue.png" alt=""> 120</div>
-                        <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
-                        <div><img src="../static/assets/images/share.png" alt=""> 20</div>
-                    </div>
-                    <!--                    <div class="post-profile-icon">-->
-                    <!--                        <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
-                    <!--                    </div>-->
-                </div>
-            </div>
-
-            <div class="post-container">
-                <div class="post-row">
-                    <div class="user-profile">
-                        <img src="../static/assets/images/default-avatar.png" alt="">
-                        <div>
-                            <p>John Nicholson</p>
-                            <span>June 24 2021, 13:40 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"><i class="bi bi-three-dots-vertical"></i></a>
-                </div>
-
-                <p class="post-text">Subscribe <span>@Easy Tutorials</span> YouTube channel to watch more videos on
-                    website
-                    development and UI designs.
-                    <a href="#">#EasyTutorials</a> <a href="#">#YouTubeChannel</a></p>
-                <img src="../static/assets/images/feed-image-2.png" alt="" class="post-img">
-
-                <div class="post-row">
-                    <div class="activity-icons">
-                        <div><img src="../static/assets/images/like.png" alt=""> 120</div>
-                        <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
-                        <div><img src="../static/assets/images/share.png" alt=""> 20</div>
-                    </div>
-                    <!--                    <div class="post-profile-icon">-->
-                    <!--                        <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
-                    <!--                    </div>-->
-                </div>
-            </div>
-
-            <div class="post-container">
-                <div class="post-row">
-                    <div class="user-profile">
-                        <img src="../static/assets/images/default-avatar.png" alt="">
-                        <div>
-                            <p>John Nicholson</p>
-                            <span>June 24 2021, 13:40 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"><i class="bi bi-three-dots-vertical"></i></a>
-                </div>
-
-                <p class="post-text">Subscribe <span>@Easy Tutorials</span> YouTube channel to watch more videos on
-                    website
-                    development and UI designs.
-                    <a href="#">#EasyTutorials</a> <a href="#">#YouTubeChannel</a></p>
-                <img src="../static/assets/images/feed-image-3.png" alt="" class="post-img">
-
-                <div class="post-row">
-                    <div class="activity-icons">
-                        <div><img src="../static/assets/images/like.png" alt=""> 120</div>
-                        <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
-                        <div><img src="../static/assets/images/share.png" alt=""> 20</div>
-                    </div>
-                    <!--                    <div class="post-profile-icon">-->
-                    <!--                        <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
-                    <!--                    </div>-->
-                </div>
-            </div>
-
-            <div class="post-container">
-                <div class="post-row">
-                    <div class="user-profile">
-                        <img src="../static/assets/images/default-avatar.png" alt="">
-                        <div>
-                            <p>John Nicholson</p>
-                            <span>June 24 2021, 13:40 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"><i class="bi bi-three-dots-vertical"></i></a>
-                </div>
-
-                <p class="post-text">Subscribe <span>@Easy Tutorials</span> YouTube channel to watch more videos on
-                    website
-                    development and UI designs.
-                    <a href="#">#EasyTutorials</a> <a href="#">#YouTubeChannel</a></p>
-                <img src="../static/assets/images/feed-image-4.png" alt="" class="post-img">
-
-                <div class="post-row">
-                    <div class="activity-icons">
-                        <div><img src="../static/assets/images/like.png" alt=""> 120</div>
-                        <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
-                        <div><img src="../static/assets/images/share.png" alt=""> 20</div>
-                    </div>
-                    <!--                    <div class="post-profile-icon">-->
-                    <!--                        <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
-                    <!--                    </div>-->
-                </div>
-            </div>
-
-            <div class="post-container">
-                <div class="post-row">
-                    <div class="user-profile">
-                        <img src="../static/assets/images/default-avatar.png" alt="">
-                        <div>
-                            <p>John Nicholson</p>
-                            <span>June 24 2021, 13:40 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"><i class="bi bi-three-dots-vertical"></i></a>
-                </div>
-
-                <p class="post-text">Subscribe <span>@Easy Tutorials</span> YouTube channel to watch more videos on
-                    website
-                    development and UI designs.
-                    <a href="#">#EasyTutorials</a> <a href="#">#YouTubeChannel</a></p>
-                <img src="../static/assets/images/feed-image-5.png" alt="" class="post-img">
-
-                <div class="post-row">
-                    <div class="activity-icons">
-                        <div><img src="../static/assets/images/like.png" alt=""> 120</div>
-                        <div><img src="../static/assets/images/comments.png" alt=""> 45</div>
-                        <div><img src="../static/assets/images/share.png" alt=""> 20</div>
+                        <!--                        <div><img src="../static/assets/images/like-blue.png" alt=""> 120</div>-->
+                        <!--                        <div><img src="../static/assets/images/comments.png" alt=""> 45</div>-->
+                        <!--                        <div><img src="../static/assets/images/share.png" alt=""> 20</div>-->
                     </div>
                     <!--                    <div class="post-profile-icon">-->
                     <!--                        <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->

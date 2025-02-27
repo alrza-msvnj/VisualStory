@@ -30,21 +30,5 @@ class IPostService(ABC):
         pass
 
     @abstractmethod
-    async def get_by_user(self, request: GetByUserRequest) -> List[GetByUserResponse]:
-        pass
-
-    @abstractmethod
-    async def update_likes_count(self, post_id: int, increment: bool = True) -> GetPostResponse:
-        pass
-
-    @abstractmethod
-    async def update_comments_count(self, post_id: int, increment: bool = True) -> GetPostResponse:
-        pass
-
-    @abstractmethod
-    async def get_posts_by_tag(self, tag: str) -> List[GetPostResponse]:
-        pass
-
-    @abstractmethod
-    async def get_published_posts(self) -> List[GetPostResponse]:
+    async def get_posts_by_user_id(self, request: GetByUserRequest) -> List[GetByUserResponse]:
         pass

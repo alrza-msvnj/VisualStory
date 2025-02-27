@@ -13,27 +13,29 @@ class AuthenticationController:
         self.router.get("/logout")(self.logout)
 
     @staticmethod
-    async def register(dto: RegisterRequest,
+    async def register(request: RegisterRequest,
                        service: IAuthenticationService = Depends(get_authentication_service)) -> RegisterResponse:
-        return await service.register(dto)
+        return await service.register(request)
 
     @staticmethod
-    async def login(response: Response, dto: LoginRequest,
+    async def login(response: Response, request: LoginRequest,
                     service: IAuthenticationService = Depends(get_authentication_service)):
-        login_response = await service.login(dto)
+        login_response = await service.login(request)
         if not login_response.success:
             return {"success": False, "message": login_response.message}
 
         response.set_cookie(
-            key="session",
+            key="session_id",
             value=login_response.value,
-            httponly=True,
             secure=True,  # Use True in production with HTTPS
             max_age=3600,  # Session expires in 1 hour
         )
+
+        response.headers['X-Redirect-To'] = '/'
         return {"message": "Login successful"}
 
     @staticmethod
-    async def logout(response: Response, service: IAuthenticationService = Depends(get_authentication_service)):
-        response.delete_cookie("session")
+    async def logout(response: Response):
+        response.delete_cookie("session_id")
+        response.headers['X-Redirect-To'] = '/'
         return {"message": "Logged out successfully"}

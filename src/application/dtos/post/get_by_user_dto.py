@@ -1,15 +1,17 @@
-from pydantic import BaseModel
-from typing import Optional, List
+from pydantic import BaseModel, ConfigDict
+from typing import Optional
 from datetime import datetime
 
 class GetByUserRequest(BaseModel):
     user_id: int
 
 class GetByUserResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
-    caption: Optional[str]
-    media_urls: List[str]
-    media_type: str
+    content: str
+    image_url: Optional[str]
     created_at: datetime
-    likes_count: int
-    comments_count: int
+    updated_at: datetime
+    user_id: int
+    is_deleted: bool

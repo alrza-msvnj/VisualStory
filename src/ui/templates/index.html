@@ -30,8 +30,12 @@
         <!--        </div>-->
         <ul id="nav-buttons">
             <!--            <li><a href="#"><i class="bi bi-bell"></i></a></li>-->
-            <li><a href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-left"
+            <li><a id="loginBtn" href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-left"
                                                     style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
+            </li>
+            <li>
+                <a id="logoutBtn" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"
+                                                     style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
             </li>
         </ul>
         <div class="nav-user-icon online">
@@ -150,14 +154,14 @@
             </div>
 
             <div class="post-input-container">
-                <textarea rows="3" placeholder="What's on your mind, John?"></textarea>
+                <textarea id="postContent" rows="3" placeholder="What's on your mind, John?"></textarea>
                 <div class="add-post-links">
                     <a href="#"><i class="bi bi-image-fill"></i></a>
-                    <a href="#"><i class="bi bi-tag-fill"></i></a>
+                    <!--                    <a href="#"><i class="bi bi-tag-fill"></i></a>-->
                 </div>
             </div>
 
-            <button type="submit" class="add-post-btn">Post</button>
+            <button id="postBtn" type="submit" class="add-post-btn">Post</button>
         </div>
 
         <div class="post-container">
@@ -179,7 +183,7 @@
 
             <div class="post-row">
                 <div class="activity-icons">
-                    <div><img src="../static/assets/images/like-blue.png" alt=""> 120</div>
+                    <!--                    <div><img src="../static/assets/images/like-blue.png" alt=""> 120</div>-->
                     <!--                    <div><img src="../static/assets/images/comments.png" alt=""> 45</div>-->
                     <!--                    <div><img src="../static/assets/images/share.png" alt=""> 20</div>-->
                 </div>
