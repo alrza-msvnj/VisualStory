@@ -31,15 +31,15 @@
         <ul id="nav-buttons">
             <!--            <li><a href="#"><i class="bi bi-bell"></i></a></li>-->
             <li><a id="loginBtn" href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-left"
-                                                    style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
+                                                                  style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
             </li>
             <li>
                 <a id="logoutBtn" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"
-                                                     style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
+                                                                    style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
             </li>
         </ul>
         <div class="nav-user-icon online">
-            <a href="{{ url_for('profile') }}"><img src="../static/assets/images/default-avatar.png" alt=""></a>
+            <a href="{{ url_for('profile') }}"><img id="navProfilePicture" src="../static/assets/images/default-avatar.png" alt=""></a>
         </div>
     </div>
 
@@ -98,7 +98,8 @@
     <div class="profile-details">
         <div class="pd-left">
             <div class="pd-row">
-                <img src="../static/assets/images/default-avatar.png" alt="" class="pd-image">
+                <img id="uploadProfilePictureBtn" src="../static/assets/images/default-avatar.png" alt="" class="pd-image">
+                <input id="profilePictureInput" type="file" style="display: none" accept="image/*">
                 <div>
                     <h3>Jack Nicholson</h3>
                     <p>120 Friends - 20 mutual</p>
@@ -238,7 +239,7 @@
     <p>Copyright 2021 - Easy Tutorials YouTube Channel</p>
 </div>
 
-<script src="../static/scripts/index.js"></script>
+<script src="../static/scripts/profile.js"></script>
 
 </body>
 </html>

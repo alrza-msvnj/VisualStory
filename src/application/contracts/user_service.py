@@ -6,6 +6,8 @@ from src.application.dtos.user.get_all_user_dto import GetAllUserResponse
 from src.application.dtos.user.update_user_dto import UpdateUserRequest, UpdateUserResponse
 from src.application.dtos.user.delete_user_dto import DeleteUserRequest, DeleteUserResponse
 from src.application.dtos.user.get_by_username_dto import GetByUsernameRequest, GetByUsernameResponse
+from src.application.dtos.user.get_profile_picture_dto import GetProfilePictureRequest, GetProfilePictureResponse
+from src.application.dtos.user.save_profile_picture_dto import SaveProfilePictureRequest, SaveProfilePictureResponse
 
 
 class IUserService(ABC):
@@ -32,4 +34,12 @@ class IUserService(ABC):
 
     @abstractmethod
     async def get_by_username(self, request: GetByUsernameRequest) -> GetByUsernameResponse:
+        pass
+
+    @abstractmethod
+    async def get_profile_picture(self, request: GetProfilePictureRequest) -> GetProfilePictureResponse:
+        pass
+
+    @abstractmethod
+    async def save_profile_picture(self, request: SaveProfilePictureRequest) -> SaveProfilePictureResponse:
         pass

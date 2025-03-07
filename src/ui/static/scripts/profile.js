@@ -4,6 +4,7 @@ var isLoggedIn = false;
 $(document).ready(function () {
     debugger;
     isLoggedIn = isAuthenticated();
+    loadProfilePicture();
     initLoginLogoutButtons();
     checkDarkMode();
     initClickEvents();
@@ -65,15 +66,11 @@ function initClickEvents() {
         toggleDarkMode('lightModeBtn');
     });
 
-    $('#postBtn').click(post);
-
     $('#logoutBtn').click(function (event) {
         logout(event);
     });
 
-    $('#profileBtn').click(function (event) {
-        profile(event);
-    })
+    $('#uploadProfilePictureBtn').click(uploadProfilePicture);
 }
 
 function toggleDarkMode(elementId) {
@@ -86,31 +83,8 @@ function toggleDarkMode(elementId) {
     checkDarkMode();
 }
 
-function post() {
-    if (!isLoggedIn) {
-        window.location.href = '/login';
-    }
-
-    // Serialize form data into an object (dictionary)
-    const formData = {};
-    formData.content = $('#postContent').val();
-
-    $.ajax({
-        url: '/api/post',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(formData),
-        success: function (response) {
-            console.log('Login successful:', response);
-            location.reload();
-        },
-        error: function (error) {
-            console.error('Login failed:', error);
-        }
-    });
-}
-
 function logout(event) {
+    debugger;
     event.preventDefault();
 
     $.ajax({
@@ -136,12 +110,53 @@ function logout(event) {
     });
 }
 
-function profile(event) {
-    event.preventDefault();
+function uploadProfilePicture() {
+    $('#profilePictureInput').click();
 
-    if (isLoggedIn) {
-        window.location.href = '/profile';
-    } else {
-        window.location.href = '/login';
-    }
+    $('#profilePictureInput').change(function () {
+        let file = this.files[0];
+
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function (event) {
+                $('preview').attr('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
+
+            let formData = new FormData();
+            formData.append('image', file);
+
+            $.ajax({
+                url: '/api/user/upload_profile_picture',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#uploadProfilePictureBtn').attr('src', `../static/assets/profile_pictures/${response}`);
+                    alert('Profile picture uploaded successfully!');
+                    console.log(response);
+                },
+                error: function (err) {
+                    alert('Profile picture upload failed.');
+                    console.log(err);
+                }
+            });
+        }
+    });
+}
+
+function loadProfilePicture() {
+    $.ajax({
+        url: '/api/user/get_profile_picture',
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            if (response.profile_picture) {
+                $('#uploadProfilePictureBtn').attr('src', `../static/assets/profile_pictures/${response.profile_picture}`);
+                $('#navProfilePicture').attr('src', `../static/assets/profile_pictures/${response.profile_picture}`);
+            }
+        }
+    });
 }

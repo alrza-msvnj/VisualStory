@@ -15,5 +15,6 @@ class User(BaseEntity):
     last_login: Mapped[datetime] = mapped_column(default=datetime.now())
     is_active: Mapped[bool] = mapped_column(nullable=True, default=True)
     role: Mapped[str] = mapped_column(nullable=True, default='user')
+    profile_picture: Mapped[str] = mapped_column(nullable=True)
     
     posts: Mapped[list["Post"]] = relationship("Post", back_populates="user", cascade="all, delete-orphan")
