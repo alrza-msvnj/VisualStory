@@ -15,7 +15,7 @@ function isAuthenticated() {
     const cookies = document.cookie.split(';');
     for (const cookie of cookies) {
         const [key, value] = cookie.split('=');
-        if (key === 'session_id') {
+        if (key.trim() === 'session_id') {
             return true;
         }
     }

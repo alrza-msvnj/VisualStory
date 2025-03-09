@@ -47,7 +47,12 @@ class PostController:
 
     @staticmethod
     async def get_all(service: IPostService = Depends(get_post_service)) -> List[GetAllPostResponse]:
-        return await service.get_all()
+        posts = await service.get_all()
+        posts = sorted(posts, key=lambda post: post.created_at, reverse=True)
+        posts = posts[0:10]
+        for post in posts:
+            post.created_at = post.created_at.strftime("%B %d %Y, %I:%M %p")
+        return posts
 
     @staticmethod
     async def update(request: UpdatePostRequest, service: IPostService = Depends(get_post_service)) -> UpdatePostResponse:
@@ -59,4 +64,4 @@ class PostController:
 
     @staticmethod
     async def get_posts_by_user_id(user_id: int, service: IPostService = Depends(get_post_service)) -> List[GetByUserResponse]:
-        return await service.get_posts_by_user(GetByUserRequest(user_id=user_id))
+        return await service.get_posts_by_user_id(GetByUserRequest(user_id=user_id))

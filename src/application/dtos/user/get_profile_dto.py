@@ -1,11 +1,11 @@
 from typing import Optional
-
 from pydantic import BaseModel
 
 
-class GetProfilePictureRequest(BaseModel):
+class GetProfileRequest(BaseModel):
     user_id: int
 
 
-class GetProfilePictureResponse(BaseModel):
+class GetProfileResponse(BaseModel):
+    username: str
     profile_picture: Optional[str]

@@ -13,7 +13,7 @@ from src.application.dtos.user.get_all_user_dto import GetAllUserResponse
 from src.application.dtos.user.update_user_dto import UpdateUserRequest, UpdateUserResponse
 from src.application.dtos.user.delete_user_dto import DeleteUserRequest, DeleteUserResponse
 from src.application.dtos.user.get_by_username_dto import GetByUsernameRequest, GetByUsernameResponse
-from src.application.dtos.user.get_profile_picture_dto import GetProfilePictureRequest, GetProfilePictureResponse
+from src.application.dtos.user.get_profile_dto import GetProfileRequest, GetProfileResponse
 from src.application.dtos.user.save_profile_picture_dto import SaveProfilePictureRequest
 
 UPLOAD_DIR = "src/ui/static/assets/profile_pictures"
@@ -30,7 +30,7 @@ class UserController:
         self.router.put("/", response_model=UpdateUserResponse)(self.update)
         self.router.delete("/{id}")(self.delete)
         self.router.get("/get_by_username/{username}", response_model=GetByUsernameResponse)(self.get_by_username)
-        self.router.post("/get_profile_picture", response_model=GetProfilePictureResponse)(self.get_profile_picture)
+        self.router.post("/get_profile_picture", response_model=GetProfileResponse)(self.get_profile)
         self.router.post("/upload_profile_picture")(self.upload_profile_picture)
 
     @staticmethod
@@ -59,18 +59,18 @@ class UserController:
         return await user_service.get_by_username(GetByUsernameRequest(username=username))
 
     @staticmethod
-    async def get_profile_picture(request: Request, user_service: IUserService = Depends(get_user_service)) -> GetProfilePictureResponse:
+    async def get_profile(request: Request, user_service: IUserService = Depends(get_user_service)) -> GetProfileResponse:
         serializer = URLSafeTimedSerializer(os.getenv('SECRET_KEY'))
         session_id = request.cookies.get('session_id')
         if not session_id:
             raise HTTPException(status_code=400, detail="Login required")
         session = serializer.loads(session_id)
 
-        get_profile_picture_request = GetProfilePictureRequest(
+        get_profile_request = GetProfileRequest(
             user_id=session['user_id']
         )
 
-        response = await user_service.get_profile_picture(get_profile_picture_request)
+        response = await user_service.get_profile(get_profile_request)
 
         return response
 

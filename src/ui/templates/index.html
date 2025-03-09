@@ -31,15 +31,17 @@
         <ul id="nav-buttons">
             <!--            <li><a href="#"><i class="bi bi-bell"></i></a></li>-->
             <li><a id="loginBtn" href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-left"
-                                                    style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
+                                                                  style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
             </li>
             <li>
                 <a id="logoutBtn" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"
-                                                     style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
+                                                                    style="font-size: 20px; position: relative; top: 1.5px;"></i></a>
             </li>
         </ul>
         <div class="nav-user-icon online">
-            <a id="profileBtn" href="{{ url_for('profile') }}"><img src="../static/assets/images/default-avatar.png" alt=""></a>
+            <a id="profileBtn" href="{{ url_for('profile') }}"><img id="navProfilePicture"
+                                                                    src="../static/assets/profile_pictures/default-avatar.png"
+                                                                    alt=""></a>
         </div>
     </div>
 
@@ -146,15 +148,15 @@
 
         <div class="write-post-container">
             <div class="user-profile">
-                <img src="../static/assets/images/default-avatar.png" alt="">
+                <img id="writePostProfilePicture" src="../static/assets/profile_pictures/default-avatar.png" alt="">
                 <div>
-                    <p>John Nicholson</p>
-                    <small>Public <i class="bi bi-caret-down-fill"></i></small>
+                    <p id="writePostAuthor"></p>
+                    <!--                    <small>Public <i class="bi bi-caret-down-fill"></i></small>-->
                 </div>
             </div>
 
             <div class="post-input-container">
-                <textarea id="postContent" rows="3" placeholder="What's on your mind, John?"></textarea>
+                <textarea id="postContent" rows="3" placeholder="What's on your mind?"></textarea>
                 <div class="add-post-links">
                     <a href="#"><i class="bi bi-image-fill"></i></a>
                     <!--                    <a href="#"><i class="bi bi-tag-fill"></i></a>-->
@@ -164,34 +166,35 @@
             <button id="postBtn" type="submit" class="add-post-btn">Post</button>
         </div>
 
-        <div class="post-container">
-            <div class="post-row">
-                <div class="user-profile">
-                    <img src="../static/assets/images/default-avatar.png" alt="">
-                    <div>
-                        <p>John Nicholson</p>
-                        <span>June 24 2021, 13:40 pm</span>
-                    </div>
-                </div>
-                <!--                <a href="#"><i class="bi bi-three-dots-vertical"></i></a>-->
-            </div>
+        <div id="postContainer"></div>
+        <!--        <div class="post-container">-->
+        <!--            <div class="post-row">-->
+        <!--                <div class="user-profile">-->
+        <!--                    <img src="../static/assets/profile_pictures/default-avatar.png" alt="">-->
+        <!--                    <div>-->
+        <!--                        <p>John Nicholson</p>-->
+        <!--                        <span>June 24 2021, 13:40 pm</span>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash;                <a href="#"><i class="bi bi-three-dots-vertical"></i></a>&ndash;&gt;-->
+        <!--            </div>-->
 
-            <p class="post-text">Subscribe <span>@Easy Tutorials</span> YouTube channel to watch more videos on website
-                development and UI designs.
-                <a href="#">#EasyTutorials</a> <a href="#">#YouTubeChannel</a></p>
-            <img src="../static/assets/images/feed-image-1.png" alt="" class="post-img">
+        <!--            <p class="post-text">Subscribe <span>@Easy Tutorials</span> YouTube channel to watch more videos on website-->
+        <!--                development and UI designs.-->
+        <!--                <a href="#">#EasyTutorials</a> <a href="#">#YouTubeChannel</a></p>-->
+        <!--            <img src="../static/assets/images/feed-image-1.png" alt="" class="post-img">-->
 
-            <div class="post-row">
-                <div class="activity-icons">
-                    <!--                    <div><img src="../static/assets/images/like-blue.png" alt=""> 120</div>-->
-                    <!--                    <div><img src="../static/assets/images/comments.png" alt=""> 45</div>-->
-                    <!--                    <div><img src="../static/assets/images/share.png" alt=""> 20</div>-->
-                </div>
-                <!--                <div class="post-profile-icon">-->
-                <!--                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>-->
-                <!--                </div>-->
-            </div>
-        </div>
+        <!--            <div class="post-row">-->
+        <!--                <div class="activity-icons">-->
+        <!--                    &lt;!&ndash;                    <div><img src="../static/assets/images/like-blue.png" alt=""> 120</div>&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                    <div><img src="../static/assets/images/comments.png" alt=""> 45</div>&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                    <div><img src="../static/assets/images/share.png" alt=""> 20</div>&ndash;&gt;-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash;                <div class="post-profile-icon">&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    <img src="../static/assets/images/profile-pic.png" alt=""> <i class="bi bi-caret-down-fill"></i>&ndash;&gt;-->
+        <!--                &lt;!&ndash;                </div>&ndash;&gt;-->
+        <!--            </div>-->
+        <!--        </div>-->
 
         <button type="button" class="load-more-btn">Load More</button>
     </div>

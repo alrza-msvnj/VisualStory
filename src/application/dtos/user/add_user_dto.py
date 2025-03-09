@@ -20,7 +20,6 @@ class AddUserResponse(BaseModel):
     email: str
     first_name: Optional[str] = None
     last_name: Optional[str] = None
-    profile_picture_url: Optional[str] = None
     bio: Optional[str] = None
     join_date: datetime
     last_login: Optional[datetime] = None

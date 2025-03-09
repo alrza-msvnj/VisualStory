@@ -35,7 +35,8 @@ class AuthenticationService(IAuthenticationService):
             password_hash=hashed_password.decode('utf-8'),
             first_name=request.first_name,
             last_name=request.last_name,
-            role='user'
+            role='user',
+            profile_picture='default-avatar.png'
         )
 
         # Save user
